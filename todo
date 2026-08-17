@@ -1,0 +1,35 @@
+how continer are isolated from each others 
+first namespaces that give the proces own view of the system
+and cgroup that we can controle the ressourcres
+lets tolk about what is a continer
+is in isolate envirment where a proces or more two can run
+why we call it continer 
+so in arabic continer mean 7awiya is like you get a proces and give it on world
+why docker becouse to mange a proces and give it on world or manager multple proces it kinde harde so this is why docker 
+you will manager all that by commands
+we talk about coninter and we not montion image so
+image it like a tamplet or a blueprint of that coninter so with one image we can creat multple continers
+and what inside this image:
+inside all thinks that need to create a continer file system and enviroment
+
+
+alerte CMD AND ENTRYPONIT
+
+
+to run docker without sudo i need to add the user to the docker group with sudo usermod -aG docker $user
+if i want to install and image form docker hub docker pull name of images
+to see runing continers docker ps
+to see all continers including stoped ones docker ps -a
+if i want to run a continer i do docker run image name 
+if i want to run a continer in the background docker run -d image name () and the docker return a generate continer name
+if i want to set a name by my self docker run --name setname image name
+if i want to stop a continer docker stop (continer name or continer id)
+if i want to change the port docker run -p 8080:80
+if i want to delete a continer docker rm -f (force if the continer is runing)
+if i want to start an existing continer docker start (name or id of continer)
+if i want a new continer docker run 
+and then if i want to delete image so docker rmi name of image
+so if i want to run a command inside an existing container docker exec container-name executable commnad like ls
+and if i want to ineracet with a shell process so i add -it remamber exec start a process inside my container
+and if i want logs of my container docker logs container-name
+and if i want detailed information about the container docker inspect container-name 
