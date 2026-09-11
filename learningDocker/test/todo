@@ -1,46 +1,141 @@
-how continer are isolated from each others 
-first namespaces that give the proces own view of the system
-and cgroup that we can controle the ressourcres
-lets tolk about what is a continer
-is in isolate envirment where a proces or more two can run
-why we call it continer 
-so in arabic continer mean 7awiya is like you get a proces and give it on world
-why docker becouse to mange a proces and give it on world or manager multple proces it kinde harde so this is why docker 
-you will manager all that by commands
-we talk about coninter and we not montion image so
-image it like a tamplet or a blueprint of that coninter so with one image we can creat multple continers
-and what inside this image:
-inside all thinks that need to create a continer file system and enviroment
+How are containers isolated from each other?
 
+First, namespaces give the process its own view of the system.
 
-alerte CMD AND ENTRYPONIT this are dockerfile instruction 
+And cgroups allow us to control the resources.
 
+Let's talk about what a container is.
 
-to run docker without sudo i need to add the user to the docker group with sudo usermod -aG docker $user
-if i want to install and image form docker hub docker pull name of images
-to see runing continers docker ps
-to see all continers including stoped ones docker ps -a
-if i want to run a continer i do docker run image name 
-if i want to run a continer in the background docker run -d image name () and the docker return a generate continer name
-if i want to set a name by my self docker run --name setname image name
-if i want to stop a continer docker stop (continer name or continer id)
-if i want to change the port docker run -p 8080:80
-if i want to delete a continer docker rm -f (force if the continer is runing)
-if i want to start an existing continer docker start (name or id of continer)
-if i want a new continer docker run 
-and then if i want to delete image so docker rmi name of image
-so if i want to run a command inside an existing container docker exec container-name executable commnad like ls
-and if i want to ineracet with a shell process so i add -it remamber exec start a process inside my container
-and if i want logs of my container docker logs container-name
-and if i want detailed information about the container docker inspect container-nam
+It is an isolated environment where one or more processes can run.
 
+Why do we call it a container?
 
-in docker file
+In Arabic, container means "7awiya". It is like you take a process and give it its own world.
 
-we do FROM debin::bookmark it mean begin from userspace
-and run command this command run at the building of the image
-and CMMD is the command that run when a container is build and this be his main process if the process finish the container finish 
-too and if we have cmd in docker file and we do docker run containerName command -> this command will be his main process
-and ENTRYOPOINT you specefique on it the main programme or main process what the run when you run a container and all
-other command pass as arguments to the main process and if you want to the other command to behive as a command to the main command you add -c
-and COPY if you want to copy a file from your host machine to a specefique path to the images filesystem
+Why Docker?
+
+Because managing a process and giving it its own world, or managing multiple processes, is kind of hard. This is why we use Docker.
+
+You can manage all of that using commands.
+
+We talked about containers, but we didn't mention images.
+
+An image is like a template or a blueprint of a container. With one image, we can create multiple containers.
+
+And what is inside this image?
+
+It contains everything needed to create a container, such as the filesystem and environment.
+
+Alert: CMD and ENTRYPOINT are Dockerfile instructions.
+
+To run Docker without sudo, I need to add the user to the Docker group with:
+
+`sudo usermod -aG docker $USER`
+
+If I want to install an image from Docker Hub:
+
+`docker pull image-name`
+
+To see running containers:
+
+`docker ps`
+
+To see all containers, including stopped ones:
+
+`docker ps -a`
+
+If I want to run a container:
+
+`docker run image-name`
+
+If I want to run a container in the background:
+
+`docker run -d image-name`
+
+Docker will generate a container name automatically.
+
+If I want to set a name myself:
+
+`docker run --name set-name image-name`
+
+If I want to stop a container:
+
+`docker stop container-name`
+
+or:
+
+`docker stop container-id`
+
+If I want to map a port:
+
+`docker run -p 8080:80 image-name`
+
+If I want to delete a container:
+
+`docker rm container-name`
+
+If I want to force-delete a running container:
+
+`docker rm -f container-name`
+
+If I want to start an existing container:
+
+`docker start container-name`
+
+or:
+
+`docker start container-id`
+
+If I want a new container, I use:
+
+`docker run`
+
+If I want to delete an image:
+
+`docker rmi image-name`
+
+If I want to run a command inside an existing container:
+
+`docker exec container-name executable command`
+
+For example:
+
+`docker exec container-name ls`
+
+If I want to interact with a shell process, I add `-it`.
+
+Remember: `docker exec` starts a process inside an existing container.
+
+If I want to see the logs of my container:
+
+`docker logs container-name`
+
+If I want detailed information about the container:
+
+`docker inspect container-name`
+
+In a Dockerfile:
+
+We use:
+
+`FROM debian:bookworm`
+
+It means we begin from the Debian userspace.
+
+The `RUN` instruction executes a command while building the image.
+
+`CMD` is the command that runs when a container starts. It normally becomes the main process of the container. If this process finishes, the container also stops.
+
+If we have `CMD` in the Dockerfile and we do:
+
+`docker run image-name command`
+
+then this command replaces the `CMD` and becomes the main process.
+
+With `ENTRYPOINT`, you specify the main program or main process that runs when you start the container.
+
+Other commands are passed as arguments to the main process.
+
+If you want the other command to behave like a command passed to a shell, you add `-c`.
+
+`COPY` is used when you want to copy a file from your host machine to a specific path in the image filesystem.
