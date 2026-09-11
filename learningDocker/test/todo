@@ -13,7 +13,7 @@ and what inside this image:
 inside all thinks that need to create a continer file system and enviroment
 
 
-alerte CMD AND ENTRYPONIT
+alerte CMD AND ENTRYPONIT this are dockerfile instruction 
 
 
 to run docker without sudo i need to add the user to the docker group with sudo usermod -aG docker $user
@@ -32,4 +32,15 @@ and then if i want to delete image so docker rmi name of image
 so if i want to run a command inside an existing container docker exec container-name executable commnad like ls
 and if i want to ineracet with a shell process so i add -it remamber exec start a process inside my container
 and if i want logs of my container docker logs container-name
-and if i want detailed information about the container docker inspect container-name 
+and if i want detailed information about the container docker inspect container-nam
+
+
+in docker file
+
+we do FROM debin::bookmark it mean begin from userspace
+and run command this command run at the building of the image
+and CMMD is the command that run when a container is build and this be his main process if the process finish the container finish 
+too and if we have cmd in docker file and we do docker run containerName command -> this command will be his main process
+and ENTRYOPOINT you specefique on it the main programme or main process what the run when you run a container and all
+other command pass as arguments to the main process and if you want to the other command to behive as a command to the main command you add -c
+and COPY if you want to copy a file from your host machine to a specefique path to the images filesystem
