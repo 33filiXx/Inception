@@ -1,6 +1,6 @@
 COMPOSE = docker compose -f srcs/docker-compose.yml
 
-DATA_DIR = /home/filixx/data
+DATA_DIR = /home/wel-mjiy/data
 MARIADB_DIR = $(DATA_DIR)/mariadb
 WORDPRESS_DIR = $(DATA_DIR)/wordpress
 
@@ -14,7 +14,7 @@ up: prepare
 	$(COMPOSE) up -d --build
 
 down:
-	$(COMPOSE) down -v
+	$(COMPOSE) down --rmi all -v
 	sudo rm -rf $(MARIADB_DIR)
 	sudo rm -rf $(WORDPRESS_DIR)
 
