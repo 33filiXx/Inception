@@ -1384,6 +1384,7 @@ docker compose up -d --build
 docker compose down
 docker compose down -v
 docker compose ps
+docker compose rmi --all
 docker compose logs
 ```
 
